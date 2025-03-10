@@ -1,0 +1,32 @@
+% !TeX program = xelatex
+
+%%% Загружаем заголовочный файл, который хранит все настройки и все
+%%% подгружаемые пакеты
+\newcommand{\No}{\textnumero}
+
+\input{config/header}
+
+%%% Загружаем настройки пакета eskdx, там нужно заполнить информацию
+%%% о документе - ФИО авторов, название документов и т.п.
+\input{config/eskdx}
+
+\begin{document}
+    %%% Делаем титульник
+    \maketitle
+
+    %%% Делаем содержание
+    \tableofcontents
+
+    %%% Введение пишется без цифры и добавляется в содержание
+    \input{sections/0. Введение}
+    \input{sections/1. Описание объекта}
+    \input{sections/2. Определение задач проекта видеонаблюдения}
+    \input{sections/3. Описание существующей системы видеонаблюдения}
+    \input{sections/4. Разработка технического задания на модернизацию системы видеонаблюдения}
+    \input{sections/999. Заключение}
+
+    %%% Библиография
+    \catcode`"\active\def"{\relax}
+    \bibliographystyle{styles/ugost2008}
+    \bibliography{bibliography}
+\end{document}

@@ -1,0 +1,105 @@
+%%% Здесь выбираются необходимые графы
+\documentclass[hpadding=3mm,russian,utf8,pointsection,simple]{styles/eskdtext}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text} % Для того чтобы работали стандартные сочетания символов ---, --, << >> и т.п.
+
+%%% Что бы работал eskdx и некоторые другие пакеты LaTeX
+\usepackage{xecyr}
+
+%%% Для работы шрифтов
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+%%% Для работы с русскими текстами (расстановки переносов, последовательность комманд строго обязательна)
+% \usepackage{polyglossia}
+% \setdefaultlanguage{russian}
+%\newfontfamily{\cyrillicfontt}{GOST_B}
+%\set{GOST_type_A}
+%\setmainfont{GOST_type_A.ttf}
+%\setromanfont{GOST_type_A.ttf}
+%\setsansfont{GOST_type_A.ttf}
+%\setmonofont{GOST_type_A.ttf}
+%
+\setmainfont[
+  BoldFont={Times_New_Roman_Bold.ttf},
+  ItalicFont={Times_New_Roman_Italic.ttf},
+  BoldItalicFont={Times_New_Roman_Bold_Italic.ttf}
+]{Times_New_Roman.ttf}
+\setromanfont[
+  BoldFont={Times_New_Roman_Bold.ttf},
+  ItalicFont={Times_New_Roman_Italic.ttf},
+  BoldItalicFont={Times_New_Roman_Bold_Italic.ttf}
+]{Times_New_Roman.ttf}
+\setsansfont[
+  BoldFont={Times_New_Roman_Bold.ttf},
+  ItalicFont={Times_New_Roman_Italic.ttf},
+  BoldItalicFont={Times_New_Roman_Bold_Italic.ttf}
+]{Times_New_Roman.ttf}
+\setmonofont[
+  BoldFont={Times_New_Roman_Bold.ttf},
+  ItalicFont={Times_New_Roman_Italic.ttf},
+  BoldItalicFont={Times_New_Roman_Bold_Italic.ttf}
+]{Times_New_Roman.ttf}
+
+% polyglossia only
+% \newfontfamily\cyrillicfont{GOST_type_A} 
+% \newfontfamily\cyrillicfontrm{GOST_type_A}
+% \newfontfamily\cyrillicfonttt{GOST_type_A}
+% \newfontfamily\cyrillicfontsf{GOST_type_A}
+%\defaultfontfeatures{Mapping=tex-text}
+
+
+%%% Для работы со сложными формулами
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%%% Что бы использовать символ градуса (°) - \degree
+\usepackage{gensymb}
+
+
+%%% Для переноса составных слов
+%\XeTeXinterchartokenstate=1
+\XeTeXcharclass `\- 24
+\XeTeXinterchartoks 24 0 ={\hskip\z@skip}
+\XeTeXinterchartoks 0 24 ={\nobreak}
+
+%%% Ставим подпись к рисункам. Вместо «рис. 1» будет «Рисунок 1»
+\addto{\captionsrussian}{\renewcommand{\figurename}{Рисунок}}
+%%% Убираем точки после цифр в заголовках
+\def\russian@capsformat{%
+  \def\postchapter{\@aftersepkern}%
+  \def\postsection{\@aftersepkern}%
+  \def\postsubsection{\@aftersepkern}%
+  \def\postsubsubsection{\@aftersepkern}%
+  \def\postparagraph{\@aftersepkern}%
+  \def\postsubparagraph{\@aftersepkern}%
+}
+
+
+
+% Автоматически переносить на след. строку слова которые не убираются
+% в строке
+\sloppy
+
+%%% Для вставки рисунков
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%%% Для вставки интернет ссылок, полезно в библиографии
+\usepackage{url}
+
+%%% Подподразделы(\subsubsection) не выводим в содержании
+\setcounter{tocdepth}{2}
+
+%%% Большие таблицы
+\usepackage{longtable}
+
+%%% Отключение отступов в перечислениях
+%\usepackage{enumitem}
+%\setlist[itemize]{noitemsep, topsep=0pt}
+%\setlist[enumerate]{noitemsep, topsep=0pt}
+
+
+%%% Каждый раздел (\section) с новой страницы
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
